@@ -99,7 +99,7 @@ const ShoppingCart = () => {
                 {filteredProducts.map((product) => (
                     <Grid item xs={12} sm={6} md={3} lg={3} key={product.id} display="flex" justifyContent="center">
                         <Card sx={{ maxWidth: 280, height: 350, display: "flex", flexDirection: "column", justifyContent: "space-between" }}>
-                        <CardActions>
+                            <CardActions>
                                 <Button variant="contained" sx={{ fontSize: "0.8rem", padding: "4px 8px" }} onClick={() => handleAddToCart(product)}>
                                     Add to Cart
                                 </Button>
@@ -110,7 +110,7 @@ const ShoppingCart = () => {
                                 subheader={<Typography variant="body2" sx={{ fontSize: "0.8rem" }}>₹{product.price}</Typography>}
                             />
                             <CardMedia component="img" height="120" image={product.image} alt={product.title} />
-                          
+
                             <CardContent>
                                 <Typography
                                     variant="body2"
@@ -132,7 +132,7 @@ const ShoppingCart = () => {
                                     {expanded[product.id] ? "Show Less" : "...More"}
                                 </Button>
                             </CardContent>
-                          
+
                         </Card>
                     </Grid>
                 ))}
@@ -181,19 +181,48 @@ const ShoppingCart = () => {
                     </List>
                 </Box>
 
-                <Box sx={{ padding: 2, backgroundColor: "#f5f5f5", borderRadius: 2 }}>
-                    <Typography variant="body1" sx={{ fontSize: { xs: "0.9rem", md: "1rem" } }}>
-                        Total Price: ₹{totalPrice.toFixed(2)}
-                    </Typography>
-                    <Typography variant="body1" sx={{ fontSize: { xs: "0.9rem", md: "1rem" } }}>
-                        Discount (53.3%): -₹{discount.toFixed(2)}
-                    </Typography>
-                    <Typography variant="body1" sx={{ fontSize: { xs: "0.9rem", md: "1rem" } }}>
-                        Delivery Charge: ₹{deliveryCharge}
-                    </Typography>
-                    <Typography variant="h6" sx={{ fontSize: { xs: "1rem", md: "1.2rem" }, fontWeight: "bold" }}>
-                        Final Amount: ₹{finalAmount.toFixed(2)}
-                    </Typography>
+                <Box
+                    sx={{
+                        padding: 2,
+                        backgroundColor: "#f5f5f5",
+                        borderRadius: 2,
+                    }}
+                >
+                    <Box sx={{ display: "flex", justifyContent: "space-between" }}>
+                        <Typography variant="body1" sx={{ fontSize: { xs: "0.9rem", md: "1rem" } }}>
+                            Total Price:
+                        </Typography>
+                        <Typography variant="body1" sx={{ fontSize: { xs: "0.9rem", md: "1rem" } }}>
+                            ₹{totalPrice.toFixed(2)}
+                        </Typography>
+                    </Box>
+
+                    <Box sx={{ display: "flex", justifyContent: "space-between" }}>
+                        <Typography variant="body1" sx={{ fontSize: { xs: "0.9rem", md: "1rem" } }}>
+                            Discount (13.3%):
+                        </Typography>
+                        <Typography variant="body1" sx={{ fontSize: { xs: "0.9rem", md: "1rem" } }}>
+                            -₹{discount.toFixed(2)}
+                        </Typography>
+                    </Box>
+
+                    <Box sx={{ display: "flex", justifyContent: "space-between" }}>
+                        <Typography variant="body1" sx={{ fontSize: { xs: "0.9rem", md: "1rem" } }}>
+                            Delivery Charge:
+                        </Typography>
+                        <Typography variant="body1" sx={{ fontSize: { xs: "0.9rem", md: "1rem" } }}>
+                            ₹{deliveryCharge}
+                        </Typography>
+                    </Box>
+
+                    <Box sx={{ display: "flex", justifyContent: "space-between", fontWeight: "bold" }}>
+                        <Typography variant="h6" sx={{ fontSize: { xs: "1rem", md: "1.2rem" } }}>
+                            Final Amount:
+                        </Typography>
+                        <Typography variant="h6" sx={{ fontSize: { xs: "1rem", md: "1.2rem" } }}>
+                            ₹{finalAmount.toFixed(2)}
+                        </Typography>
+                    </Box>
 
                     <Box sx={{ display: "flex", justifyContent: "flex-end", mt: 2 }}>
                         <Button
@@ -204,13 +233,14 @@ const ShoppingCart = () => {
                                 px: 3,
                                 backgroundColor: "green",
                                 color: "white",
-                                "&:hover": { backgroundColor: "#FFD700" }
+                                "&:hover": { backgroundColor: "#FFD700" },
                             }}
                         >
                             Confirm Order
                         </Button>
                     </Box>
                 </Box>
+
 
             </Dialog>
             <Dialog open={orderModalOpen} onClose={handleCloseOrderModal}>
