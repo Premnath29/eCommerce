@@ -32,6 +32,7 @@ import { red } from "@mui/material/colors";
 import AddIcon from "@mui/icons-material/Add";
 import RemoveIcon from "@mui/icons-material/Remove";
 import CloseIcon from "@mui/icons-material/Close";
+import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 
 const Transition = React.forwardRef(function Transition(props, ref) {
     return <Slide direction="up" ref={ref} {...props} />;
@@ -171,7 +172,12 @@ const ShoppingCart = () => {
                                         <Typography>{item.quantity}</Typography>
                                         <IconButton onClick={() => handleUpdateQuantity(item.id, 1)}><AddIcon /></IconButton>
                                     </Box>
-                                    <Button color="error" sx={{ mt: { xs: 1, sm: 0 } }} onClick={() => handleRemoveFromCart(item.id)}>
+                                    <Button
+                                        color="error"
+                                        sx={{ mt: { xs: 1, sm: 0 } }}
+                                        onClick={() => handleRemoveFromCart(item.id)}
+                                        startIcon={<DeleteOutlineIcon />} 
+                                    >
                                         Remove
                                     </Button>
                                 </ListItemButton>
