@@ -99,12 +99,18 @@ const ShoppingCart = () => {
                 {filteredProducts.map((product) => (
                     <Grid item xs={12} sm={6} md={3} lg={3} key={product.id} display="flex" justifyContent="center">
                         <Card sx={{ maxWidth: 280, height: 350, display: "flex", flexDirection: "column", justifyContent: "space-between" }}>
+                        <CardActions>
+                                <Button variant="contained" sx={{ fontSize: "0.8rem", padding: "4px 8px" }} onClick={() => handleAddToCart(product)}>
+                                    Add to Cart
+                                </Button>
+                            </CardActions>
                             <CardHeader
                                 avatar={<Avatar sx={{ bgcolor: red[500], width: 32, height: 32 }}>{product.title.charAt(0)}</Avatar>}
                                 title={<Typography variant="subtitle1" sx={{ fontSize: "0.9rem" }}>{product.title}</Typography>}
                                 subheader={<Typography variant="body2" sx={{ fontSize: "0.8rem" }}>₹{product.price}</Typography>}
                             />
                             <CardMedia component="img" height="120" image={product.image} alt={product.title} />
+                          
                             <CardContent>
                                 <Typography
                                     variant="body2"
@@ -126,11 +132,7 @@ const ShoppingCart = () => {
                                     {expanded[product.id] ? "Show Less" : "...More"}
                                 </Button>
                             </CardContent>
-                            <CardActions>
-                                <Button variant="contained" sx={{ fontSize: "0.8rem", padding: "4px 8px" }} onClick={() => handleAddToCart(product)}>
-                                    Add to Cart
-                                </Button>
-                            </CardActions>
+                          
                         </Card>
                     </Grid>
                 ))}
