@@ -62,7 +62,7 @@ const ShoppingCart = () => {
 
     const handleAddToCart = (product) => {
         dispatch(addToCart(product));
-        setOpen(true);
+
     };
 
     const handleUpdateQuantity = (id, amount) => {
